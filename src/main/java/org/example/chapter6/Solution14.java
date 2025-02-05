@@ -1,6 +1,7 @@
 package org.example.chapter6;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Solution14 { // 고민해 봐야할 점: 너무 많은 듯한 분기점(시간복잡도(효율성)는 통과)
@@ -17,7 +18,7 @@ public class Solution14 { // 고민해 봐야할 점: 너무 많은 듯한 분�
     public static String solution(int n, int k, String[] cmd){
         ArrayList<Integer> list = new ArrayList<>();
         Stack<Integer> delete = new Stack<>();
-        StringBuilder result = new StringBuilder();
+        char[] answer = new char[n];
         for(int i = 0; i<n; i++){
             list.add(i);
         }
@@ -47,14 +48,12 @@ public class Solution14 { // 고민해 봐야할 점: 너무 많은 듯한 분�
             }
         }
 
-        for(int i = 0; i< n; i++){
-            if(!delete.isEmpty() && i == delete.peek()){
-                result.append('X');
-                delete.pop();
-            }
-            else result.append('O');
+        Arrays.fill(answer, 'O');
+        while(!delete.isEmpty()){
+            int idx = delete.pop();
+            answer[idx] = 'X';
         }
 
-        return result.toString();
+        return new String(answer);
     }
 }
