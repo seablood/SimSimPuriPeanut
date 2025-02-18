@@ -1,7 +1,6 @@
 package org.example.chapter8;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Solution23 {
     public static void main(String[] args){
